@@ -39,4 +39,8 @@ In this context replicationcontroller or replicaset comes on it. If you have a s
 
 # Deployment: 
 
-Deployment is an object of kubernetes is used for creating multiple pods with an application using replicationcontroller or replicaset and can do update with version of application when newer version comes on. Rollout and undo activities of applications can perform with deployent object. Rolling update is a type of application update among running applications. It will up newer version and down older version one by one. If any wrong is happend can undo to previous stat. 
+Deployment is an object of kubernetes is used for creating multiple pods with an application using replicationcontroller or replicaset and can do update with version of application when newer version comes on. Rollout and undo activities of applications can perform with deployent object. Rolling update is a type of application update among running applications. It will up newer version and down older version one by one. If any wrong is happend can undo to previous state. 
+
+# Kubernetes Networking:
+
+Minikube is single node cluster and while set up on my laptop will get an IP as like virtualbox setup. And each pod created on a node get an internal privage network assigned by kubernetes like 10.244.0.0 series. Multiple pods will get individual IP with this series and accessible among all pods on same node. But when on different node, pods are not able to communicate each others. There have many network solutioins like cisco, calico, vmware NSX-T, flannel and so on which will provide different internal private network block to each node and can able to communicate with each pod among all nodes. 
