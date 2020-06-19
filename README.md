@@ -35,4 +35,8 @@ But with YML file we can create a pod or multiple pods at a time through replica
 
 # Scalling application up or down for load sharing
 
-In this context replicationcontroller or replicaset comes on it. If you have a single node with a sinlge pod along with a single instance or application but increasing users to access that application are facing problem or slower performance you need to increase pod with that instance or application on that same node or different node. 
+In this context replicationcontroller or replicaset comes on it. If you have a single node with a sinlge pod along with a single instance or application but increasing users to access that application are facing problem or slower performance you need to increase pod with that instance or application on that same node or different node.
+
+# Deployment: 
+
+Deployment is an object of kubernetes is used for creating multiple pods with an application using replicationcontroller or replicaset and can do update with version of application when newer version comes on. Rollout and undo activities of applications can perform with deployent object. Rolling update is a type of application update among running applications. It will up newer version and down older version one by one. If any wrong is happend can undo to previous stat. 
