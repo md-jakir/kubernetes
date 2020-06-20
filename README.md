@@ -43,4 +43,14 @@ Deployment is an object of kubernetes is used for creating multiple pods with an
 
 # Kubernetes Networking:
 
-Minikube is single node cluster and while set up on my laptop will get an IP as like virtualbox setup. And each pod created on a node get an internal privage network assigned by kubernetes like 10.244.0.0 series. Multiple pods will get individual IP with this series and accessible among all pods on same node. But when on different node, pods are not able to communicate each others. There have many network solutioins like cisco, calico, vmware NSX-T, flannel and so on which will provide different internal private network block to each node and can able to communicate with each pod among all nodes. 
+Minikube is single node cluster and while set up on my laptop will get an IP as like virtualbox setup. And each pod created on a node get an internal privage network assigned by kubernetes like 10.244.0.0 series. Multiple pods will get individual IP with this series and accessible among all pods on same node. But when on different node, pods are not able to communicate each others. There have many network solutioins like cisco, calico, vmware NSX-T, flannel and so on which will provide different internal private network block to each node and can able to communicate with each pod among all nodes.
+
+# Service of Kubernetes:
+
+service of kubernetes is for accessing the application from outside of cluster. Created pods on a node get same IP address and every node has a internal IP address. To access the application on a node have to create service using same label when pod was created with a label.
+
+$ kubectl create -f service-definition.yml
+
+Here service-definition.yml file is defined with apiVersion: v1, kind: Service, metadata and spec section. And also have to mention nodePort, targetPort, port. Nodeport is a range of ports (30000-32767) on a node. Targetport is a port of pod which is mapped to a service port and service port is mapped to a nodeport of a node. 
+
+kubectl get nodes -o yaml
