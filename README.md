@@ -1,5 +1,5 @@
 # kubernetes
-kubernetes and its components
+kubernetes and it's components
 
 Pod: Smallest unit of kubernetes and a single instance or application run in a single pod in a node. multiple pods can run in a node but multiple same applications can't do run in a single pod. 
 
@@ -62,5 +62,11 @@ One or more initilization containers which must run to completion before any app
 # Statefulset:
 
 Manages deployments and scalling of a set of pods, with durable storage and persistent identifier for each pod.
+
+# ServiceAccount: 
+
+kubernetes doesn't allow to create user directly in a cluster like 'kubectl create user user1' To allow any user to perform any task across the cluster we need to create ClusterRole and ClusterRoleBinding. Besically ClusterRole is an object where is in define which tasks can do into which resources for a specific user or serviceaccount. And ClusterRoleBind is where user or servicesaccount is specified or mentioned into a clusterrolebinding definition file. When pod will be created pod definition file will be written using this clusterrole, clusterrolebinding and serviceaccount.
+
+
 
 
