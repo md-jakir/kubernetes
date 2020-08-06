@@ -1,0 +1,8 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: pvviewer-role
+rules:
+- apiGroups: [""] # this is for persistentvolumes apiGroup which is as false checking with kubectl api-group
+  resources: ["persistentvolumes"] #allow into resource level to access
+  verbs: ["list"] # This action just will get list on persistentvolumes resource
