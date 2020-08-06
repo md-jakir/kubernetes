@@ -54,3 +54,13 @@ $ kubectl create -f service-definition.yml
 Here service-definition.yml file is defined with apiVersion: v1, kind: Service, metadata and spec section. And also have to mention nodePort, targetPort, port. Nodeport is a range of ports (30000-32767) on a node. Targetport is a port of pod which is mapped to a service port and service port is mapped to a nodeport of a node. 
 
 kubectl get nodes -o yaml
+
+# Init Container:
+
+One or more initilization containers which must run to completion before any application container run. 
+
+# Statefulset:
+
+Manages deployments and scalling of a set of pods, with durable storage and persistent identifier for each pod.
+
+
