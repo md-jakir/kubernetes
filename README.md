@@ -65,7 +65,39 @@ Manages deployments and scalling of a set of pods, with durable storage and pers
 
 # ServiceAccount: 
 
-kubernetes doesn't allow to create user directly in a cluster like 'kubectl create user user1' To allow any user to perform any task across the cluster we need to create ClusterRole and ClusterRoleBinding. Besically ClusterRole is an object where is in define which tasks can do into which resources for a specific user or serviceaccount. And ClusterRoleBind is where user or servicesaccount is specified or mentioned into a clusterrolebinding definition file. When pod will be created pod definition file will be written using this clusterrole, clusterrolebinding and serviceaccount.
+kubernetes doesn't allow to create user directly in a cluster like 'kubectl create user user1' To allow any user to perform any task across the cluster we need to create ClusterRole and ClusterRoleBinding. Besically ClusterRole is an object where is in define which tasks can do into which resources for a specific user or serviceaccount. And ClusterRoleBinding is where user or servicesaccount is specified or mentioned into a clusterrolebinding definition file. When pod will be created pod definition file will be written using this clusterrole, clusterrolebinding and serviceaccount. we can get more information about apiGroup and api-resources using followoing command.
+
+$ kubectl api-resources & kubectl api-group
+
+This is an example of clusterrole definition file below.
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: pvviewer-role
+rules:
+- apiGroups: [""]
+  resources: ["persistentvolumes"]
+  verbs: ["list"]
+  
+Note: Here apiGroup option under rules section is defined as [""] because for persistentvolumes resource which is defined under resources section has 'false' as a apiGroup. we'll get it by using above command. If for any resource having 'true' as an apiGroup then apiGroup option will as apiGroup: "". Please have a below example.
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: pvviewer-role-binding
+subjects:
+- kind: ServiceAccount
+  name: pvviewer
+  apiGroup: “”
+  namespace: default
+roleRef:
+  kind: ClusterRole
+  name: secret-reader
+  apiGroup: rbac.authorization.k8s.io
+  
+  
+
 
 
 
