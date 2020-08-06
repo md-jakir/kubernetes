@@ -115,7 +115,9 @@ roleRef:
   
   apiGroup: rbac.authorization.k8s.io
   
+  # Ingress & Ingress controller
   
+  Ingress controller must have to remain in cluster becauser of ingress resources which is for traffic handling accross all pods in a specific namespace. Ingress resource and application must have to deploy in same namespace. But ingress controller may have in different namespace. Ingress is besically HTTP load balancing built-in configuration in kubernetes. For accessing into services in kubernetes cluster from outside network must have to deoploy Ingress controller. There are many ingress controller provider like nginx-ingress-controller(https://www.nginx.com/products/nginx/kubernetes-ingress-controller). see kubernetes documentation for more detail about ingress and ingress controller. 
   
   
 
