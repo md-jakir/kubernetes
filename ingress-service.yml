@@ -5,11 +5,13 @@ kind: Service
 metadata:
   creationTimestamp: null
   name: ingress
+  namespace: ingress-space
 spec:
   ports:
   - port: 80
     protocol: TCP
     targetPort: 80
+    nodePort: 30080
   selector:               # this selector name should match with selector name while deploying ingress-contoller
     name: nginx-ingress
   type: NodePort
