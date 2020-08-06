@@ -1,0 +1,17 @@
+service/ingress created
+master $ cat ingress.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  name: ingress
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:               # this selector name should match with selector name while deploying ingress-contoller
+    name: nginx-ingress
+  type: NodePort
+  
+  Note: inperative way: kubectl expose deployment -n ingress-space ingress-controller --type=NodePort --port=80 --name=ingress --dry-run -o yaml >ingress.yaml
