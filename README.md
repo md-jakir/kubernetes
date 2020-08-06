@@ -111,7 +111,7 @@ roleRef:
 
   kind: ClusterRole
   
-  name: secret-reader
+  name: pvviewer-role
   
   apiGroup: rbac.authorization.k8s.io
   
