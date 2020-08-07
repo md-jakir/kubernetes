@@ -8,12 +8,12 @@ spec:
   - from:
     - podSelector:
         matchLabels:
-          name: internal
+          name: internal # Internal pod label
     ports:
     - port: 8080
       protocol: TCP
   podSelector:
     matchLabels:
-      name: payroll
+      name: payroll   # payroll pod label
   policyTypes:
   - Ingress
