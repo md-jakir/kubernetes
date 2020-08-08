@@ -126,33 +126,34 @@ Endpoints resides on a service which defines a pod's IP address and service has 
 # Ingress Traffic: 
 
 Set of rules and each rule is defined to allow traffic from sources to pod or others kubernetes object matching ports and from sections. Here an exammple is for ingress rule defining three traffic under from section one is ipBlock, second one is namespaceSelector and last one is podSelector. These are allowed to a single port 6379. 
-                                  apiVersion: networking.k8s.io/v1
-                                  kind: NetworkPolicy
-                                  metadata:
-                                    name: test-network-policy
-                                    namespace: default
-                                  spec:
-                                    podSelector:
-                                      matchLabels:
-                                        role: db
-                                    policyTypes:
-                                    - Ingress
-                                    - Egress
-                                    ingress:
-                                    - from:
-                                      - ipBlock:
-                                          cidr: 172.17.0.0/16
-                                          except:
-                                          - 172.17.1.0/24
-                                      - namespaceSelector:
-                                          matchLabels:
-                                            project: myproject
-                                      - podSelector:
-                                          matchLabels:
-                                            role: frontend
-                                      ports:
-                                      - protocol: TCP
-                                        port: 6379
+
+                                    apiVersion: networking.k8s.io/v1
+                                    kind: NetworkPolicy
+                                    metadata:
+                                      name: test-network-policy
+                                      namespace: default
+                                    spec:
+                                      podSelector:
+                                        matchLabels:
+                                          role: db
+                                      policyTypes:
+                                      - Ingress
+                                      - Egress
+                                      ingress:
+                                      - from:
+                                        - ipBlock:
+                                            cidr: 172.17.0.0/16
+                                            except:
+                                            - 172.17.1.0/24
+                                        - namespaceSelector:
+                                            matchLabels:
+                                              project: myproject
+                                        - podSelector:
+                                            matchLabels:
+                                              role: frontend
+                                        ports:
+                                        - protocol: TCP
+                                          port: 6379
                                         
 # Egress Traffic: 
 
