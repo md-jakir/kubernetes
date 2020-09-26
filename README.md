@@ -89,31 +89,19 @@ rules:
   
 Note: Here apiGroup option under rules section is defined as [""] because for persistentvolumes resource which is defined under resources section has 'false' as a apiGroup. we'll get it by using above command. If for any resource having 'true' as an apiGroup then apiGroup option will as apiGroup: "". Please have a below example.
 
-apiVersion: rbac.authorization.k8s.io/v1
-
-kind: ClusterRoleBinding
-
-metadata:
-
-  name: pvviewer-role-binding
-  
-subjects:
-
-- kind: ServiceAccount
-
-  name: pvviewer
-  
-  apiGroup: “”
-  
-  namespace: default
-  
-roleRef:
-
-  kind: ClusterRole
-  
-  name: pvviewer-role
-  
-  apiGroup: rbac.authorization.k8s.io
+                                                  apiVersion: rbac.authorization.k8s.io/v1
+                                                  kind: ClusterRoleBinding
+                                                  metadata:
+                                                    name: pvviewer-role-binding
+                                                  subjects:
+                                                  - kind: ServiceAccount
+                                                    name: pvviewer
+                                                    apiGroup: “”
+                                                    namespace: default
+                                                  roleRef:
+                                                    kind: ClusterRole
+                                                    name: pvviewer-role
+                                                    apiGroup: rbac.authorization.k8s.io
   
 # Ingress & Ingress controller
   
